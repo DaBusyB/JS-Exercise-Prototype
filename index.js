@@ -15,7 +15,7 @@ function Airplane(name) {
 Airplane.prototype.takeOff = function () {
   this.isFlying = true;
 };
-Airplane.prototype.land = function () {
+Airplane.prototype.land = function () { 
   this.isFlying = false;
 };
 

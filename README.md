@@ -19,7 +19,7 @@ In order to complete these tasks you will need your newly aquired knowledge of c
 
 Two options are included below.
 
-<details>
+<!-- <details>
   <summary>1. Using Code Sandbox</summary>
 
   * Launch the sandbox using the link below.
@@ -31,7 +31,7 @@ Two options are included below.
   [LAUNCH ON CODESANDBOX 🚀](https://codesandbox.io/s/github/LambdaSchool/JS-Exercise-Prototype?previewwindow=browser)
 
   <img alt='instructions Code Sandbox' src='./instructionsCodeSandbox.png'>
-</details>
+</details> -->
 
 <details>
   <summary>2. Using VSCode and the Command Line</summary>
