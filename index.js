@@ -42,7 +42,7 @@ Airplane.prototype.land = function () {
 function Person(name, age, stomach = []) {
   this.name = name;
   this.age = age;
-  this.stomach = stomach
+  this.stomach = stomach;
 }
 
 Person.prototype.eat = function(someFood) {
@@ -60,13 +60,6 @@ Person.prototype.toString = function() {
   return `${this.name}, ${this.age}`
 }
 
-const neo = new Person({
-  name: 'Neo',
-  age: 20
-})
-
-
-
 /*
   TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
@@ -81,9 +74,41 @@ const neo = new Person({
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+  this.model = model
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
+
+Car.prototype.fill = function(gallons) {
+  return this.tank += gallons;
+}
+
+Car.prototype.drive = function(distance) {
+  const gallonsUsedPerMile = (1 / this.milesPerGallon)
+  this.tank -= gallonsUsedPerMile * distance;
+  this.odometer += distance
+
+  if((this.tank / gallonsUsedPerMile) < distance) {
+    return `I ran out of fuel at ${this.odometer} miles!`
+  }
 
 }
+
+function Batmobile(batmobileAttrs) {
+  Car.call(this, batmobileAttrs)
+}
+
+Batmobile.prototype = Object.create(Car.prototype)
+
+const batmobile = new Car({
+  model: 'BatMobile',
+  milesPerGallon: 20,
+  tank: 0,
+  odometer: 0,
+})
+
 
 /*
   TASK 3
@@ -92,9 +117,22 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(babyAttrs) {
+  Person.call(this, babyAttrs)
+  this.favoriteToy = babyAttrs.favoriteToy;
 }
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function() {
+  return `Playing with ${this.favoriteToy}`
+}
+
+const baby = new Baby({
+  name: 'Lucy',
+  age: 5,
+  favoriteToy: 'trains'
+})
 
 /* 
   TASK 4
